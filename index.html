@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyunji Kim</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #2c3e50;
+            background-color: #fff;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #1a1a1a;
+        line-height: 1.3;
+        }
+        
+        /* 학생 코멘트 이탤릭 */
+        em {
+            font-style: italic;
+            color: #555;
+        }
+
+          /* Navigation Bar */
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+nav .name {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Home Page Layout */
+        .home-content {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* Left Column - Photo */
+        .left-column {
+            margin-top: 50px;
+            flex: 0 0 320px;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        .contact-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+
+        .contact-icons a:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+
+        /* Right Column - Content */
+        .right-column {
+            margin-top: 50px;
+            flex: 1;
+        }
+
+        .name-title {
+            margin-bottom: 30px;
+        }
+
+        .name-title h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .name-title .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        /* Biography Section */
+        .biography {
+            margin-top: 30px;
+            margin-bottom: 100px;
+        }
+
+        .biography h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .biography h3 {
+            font-size: 1.025em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .biography p {
+            margin-bottom: 17px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .biography .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Interests Section */
+        .interests {
+            margin-bottom: 50px;
+        }
+
+        .interests h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .interests ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .interests li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .interests li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+
+        /* Education Section */
+        .education {
+            margin-bottom: 35px;
+        }
+
+        .education h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #e0e0e0;
+        }
+
+        .education-item .degree {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .education-item .year {
+            float: right;
+            color: #7f8c8d;
+        }
+
+        .education-item .institution {
+            color: #555;
+            margin-top: 3px;
+        }
+
+        /* Other Sections */
+        section {
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* Papers */
+        .paper {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            transition: box-shadow 0.3s;
+        }
+
+        .paper:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .paper-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .paper-abstract {
+            text-align: justify;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Teaching */
+        .teaching-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+        }
+
+        .teaching-item h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .teaching-item p {
+            margin: 5px 0;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .photo-item {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .photo-caption {
+            font-size: 0.95em;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 50px;
+            color: #7f8c8d;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .home-content {
+                flex-direction: column;
+            }
+
+            .left-column {
+                flex: 1;
+                max-width: 100%;
+            }
+
+            .education-item .year {
+                float: none;
+                display: block;
+            }
+
+            nav .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="name">Hyunji Kim</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="CV_HJK_2026.pdf" target="_blank">CV</a>
+                <a href="#research">Research</a>
+                <a href="#teaching">Teaching</a>
+                <a href="#interest">Interest</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Section - All in One View -->
+        <div id="home" class="home-content">
+            <!-- Left Column - Photo and Contact -->
+            <div class="left-column">
+                <img src="images/profile.JPG" alt="Hyunji Kim" class="profile-img">
+                
+
+            <div class="contact-info">
+                <h1>Hyunji Kim</h1>
+                <h3 class="subtitle">PhD Candidate in Economics</h3>
+                <h3 class="subtitle">University of Washington</h3>
+                <p style="margin: 20px 0; font-size: 2em;">
+                    <a href="mailto:hjkim26@uw.edu" title="Email" style="text-decoration: none; margin: 0 10px;">📧</a>
+                    <a href="CV_HJK_2025.pdf" target="_blank" title="Download CV" style="text-decoration: none; margin: 0 10px;">🔎</a>
+                </p>
+            </div>
+            </div>
+
+            <!-- Right Column - Bio, Interests, Education -->
+                <!-- Biography -->
+                <div class="right-column">
+                <div class="biography">
+                    <h1>Biography</h1>
+                    <p> </p>
+                    <h3>Hello! I am a PhD Candidate in Economics at the University of Washington!</h3>
+                    <p>My fields of interest are applied microeconomics and development economics, with a focus on gender, health, and the environment.</p>
+                    <p>My research examines how maternal and child health programs shape fertility and reproductive behavior, and how environmental shocks affect health, violence, and household well-being in low-income settings.</p>
+                </div>
+
+                <!-- Interests and Education Side by Side -->
+                <div style="display: flex; gap: 40px; margin-top: 30px;">
+                    <!-- Interests -->
+                    <div class="interests" style="flex: 1;">
+                        <h2>Interests</h2>
+                        <ul>
+                            <li>Applied Microeconomics</li>
+                            <li>Health Economics</li>
+                            <li>Development Economics</li>
+                            <li>Family Economics</li>
+                        </ul>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="education" style="flex: 1;">
+                        <h2>Education</h2>
+                        <div class="education-item">
+                            <div>
+                                <span class="degree">PhD in Economics</span>
+                                <span class="year">2026 (Expected)</span>
+                            </div>
+                            <div class="institution">University of Washington</div>
+                        </div>
+                        <div class="education-item">
+                            <div>
+                                <span class="degree">MA in Economics</span>
+                                <span class="year">2022</span>
+                            </div>
+                            <div class="institution">University of Washington</div>
+                        </div>
+                        <div class="education-item">
+                            <div>
+                                <span class="degree">BA in Economics</span>
+                                <span class="year">2018</span>
+                            </div>
+                            <div class="institution">University of Seoul, South Korea</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Research Section -->
+<section id="research">
+    <h2>Research</h2>
+    
+    <div class="paper">
+        <div class="paper-title">
+            <a href="papers/JMP_Unplanned_Birth_Hyunji_kim.pdf" target="_blank">
+            Job Market Paper: Unintended Consequences: Maternal Health Programs and the Continuation of Unintended Pregnancies</a>
+        </div>
+        <div class="paper-abstract">
+            I investigate unintended consequences of India’s maternal health program using difference-in-differences and regression discontinuity. I document that the program increased unplanned births among younger women and show that greater contact with health workers contributed to this rise. Behavioral mechanisms work through heightened perceived discordance in fertility preferences and reduced acceptance of abortion.
+            <br><br>
+            <em>Presentations: ASSA 2026, Global GLO--JOPE 2025, SEA 2025 </em>
+        </div>
+    </div>
+
+    <div class="paper">
+    <div class="paper-title">
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5351945" target="_blank">Working Paper: Hot Weather, Hot Tempers: the Impact of Heat Waves on Intimate Partner Violence in Peru </a>
+    </div>
+    <div class="paper-abstract">
+        <em> Revise & Resubmit, Journal of Population Economics </em><br><br>
+        I study the impact of extreme temperature on intimate partner violence in Peru, using high-frequency weather and helpline call data. I find short-run increases in IPV during heat waves, with stronger effects in urban areas. Evidence suggests that male stress and greater acceptance of violence contribute to these effects.
+        <br><br>
+        <em>Presentations: ASSA 2026, SEA 2025, Northwest Development Workshop 2025</em>
+    </div>
+</div>
+
+    <div class="paper">
+        <div class="paper-title">
+            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5823303" target="_blank">
+            Working Paper: Farmers' Responses to Rainfall and Temperature Shock in Indonesia </a>
+        
+        </div>
+        <div class="paper-abstract">
+            <em>with Hyelim Son and Xing Xia | Reject & Resubmit, Journal of Development Economics </em><br><br>
+            This paper explores Indonesian farmers' responses to climate variability in temperature and rainfall. We estimate that temperature variability reduces household expenditure and leads to asset depletion. We reveal that low rainfall shifts labor from non-agriculture into farming, while temperature variability increases farm work without reducing non-agricultural activities, suggesting households remain more vulnerable to temperature than rainfall shocks.
+            <br><br>
+            <em>Presentations: European Winter Meeting 2025 (scheduled), APPAM 2025 </em>
+        </div>
+    </div>
+
+    <div class="paper">
+        <div class="paper-title">Work in Progress: Violence and Child Marriage in Northern Nigeria</div>
+        <div class="paper-abstract">
+            <em>with Isabelle Cohen</em><br><br>
+            We examine how adolescent exposure to armed conflict affects marriage timing in Northern Nigeria, using novel survey data and geocoded conflict events. We find that exposure to violence near typical marriage ages increases early marriage and reduces schooling. We highlight additional impacts on early fertility and polygynous unions, showing how localized violence alters life-cycle decisions.
+        </div>
+    </div>
+
+    <div class="paper">
+        <div class="paper-title">Work in Progress: Palm Oil and Gender Inquality</div>
+        <div class="paper-abstract">
+            <a href="https://www.resemmakan.com/" target="_blank">
+            <em>with Resem Makan</em><br><br>
+    </div>
+</section>
+
+        
+        <!-- Teaching Section -->
+        <section id="teaching">
+            <h2>Teaching Experience</h2>
+            
+            <div class="teaching-item">
+                <h3>Instructor of Record - University of Washington Bothell</h3>
+                <p><strong>Course:</strong> B-BUS 220 Introduction to Microeconomics</p>
+                <p><strong>Terms:</strong> Winter 2025, Spring 2025, Fall 2025</p>
+                <p><strong>Selected Student Comments : </strong> <em>"Definetly ecnonomics was a very challanging course but the instructors enthusiam and way of teaching allowed for it to be easier", "This class was really engaging. Her style of teaching made her students interested in the course content, as well as her encouraging students to provide examples."</em></p>
+            </div>
+
+            <div class="teaching-item">
+                <h3>Instructor of Record - University of Washington</h3>
+                <p><strong>Course:</strong> ECON 201 Introduction to Macroeconomics</p>
+                <p><strong>Term:</strong> Winter 2022</p>
+                <p><strong>Selected Student Comments :</strong> <em>"I felt that the lectures felt more like class discussions which helped me become more engaged. I was not afraid to ask for better examples or
+clarifications.", "Once I understood the concept better, it would help build my overall real-world knowledge."</em></p>
+            </div>
+
+            <div class="teaching-item">
+                <h3>Instructor of Record - University of Washington</h3>
+                <p><strong>Course:</strong> ECON 200 Introduction to Microeconomics</p>
+                <p><strong>Terms:</strong> Summer 2022, Fall 2022, Winter 2023, Fall 2024</p>
+            </div>
+
+            <div class="teaching-item">
+                <h3>Teaching Assistant - University of Washington</h3>
+                <p><strong>Course:</strong> ECON 602 Teaching Introductory Economics</p>
+                <p><strong>Term:</strong> Fall 2024</p>
+            </div>
+
+            <div class="teaching-item">
+                <h3>Teaching Assistant - University of Washington</h3>
+                <p><strong>Course:</strong> ECON 200 Introduction to Microeconomics</p>
+                <p><strong>Terms:</strong> Winter 2021 – Fall 2023, Spring 2024</p>
+            </div>
+        </section>
+
+        <!-- Interest Section -->
+        <section id="interest">
+            <h2>Interest</h2>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">Outside of research, I enjoy traveling and exploring new cultures around the world! </p>
+            
+            <div class="photo-gallery">
+                <div class="photo-item">
+                    <img src="images/BC, Canada 2025.jpg" alt="Joffre Lake, BC, Canada (2025)">
+                    <div class="photo-caption">Joffre Lake, BC, Canada (2025)</div>
+                </div>
+               
+                <div class="photo-item">
+                    <img src="images/Georgia.jpg" alt="Atalanta, GA, USA (2024)">
+                    <div class="photo-caption">Atalanta, GA, USA (2024)</div>
+                </div>
+                 
+                <div class="photo-item">
+                    <img src="images/Portland.JPG" alt="Portland, OR, USA (2022)">
+                    <div class="photo-caption">Portland, OR, USA (2022)</div>
+                </div>
+               
+                
+               
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Hyunji Kim. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
